@@ -1,0 +1,40 @@
+﻿@model MagazinOnlineImbracaminte.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Html.DisplayFor(modelItem => Model.Name)</h1>
+
+<section class="currentProduct">
+    <figure class="displayPhoto">
+        <img src="@Model.Image" asp-append-version="true" style="width : 100%; height: 100%;" />
+    </figure>
+
+    <section class="displayDetails">
+        <span>@Model.Price lei</span>
+        <br>
+        @if (Model.InStock == true)
+        {
+            <span>In Stoc</span>
+            <br>
+            <span>@Model.QuantityInStock produse ramase</span>
+        }
+        else
+        {
+            <span>Produsul nu se afla in stoc!</span>
+        }
+    </section>
+
+    <form>
+        <label for="action">Cantitate:</label>
+        <select name="action" id="action">
+            @for (int i = 1; i<= Model.QuantityInStock; i++)
+            {
+                <option value=i >@i</option>
+
+            }
+        </select>
+        <button class="btn btn-primary" type="submit" name="submit" value="submit">Adauga in cos</button>
+    </form>
+</section>
