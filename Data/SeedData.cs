@@ -199,7 +199,7 @@ namespace MagazinOnlineImbracaminte.Models
                 context.Products.AddRange(
                     new Product
                     {
-                        //ProductId = 1,
+                        ProductId = 1,
                         Name = "Bluza Crem",
                         InStock = true,
                         Price = 89.99f,
@@ -215,7 +215,7 @@ namespace MagazinOnlineImbracaminte.Models
 
                     new Product
                     {
-                        //ProductId = 2,
+                        ProductId = 2,
                         Name = "Bluza Portocalie",
                         InStock = true,
                         Price = 79.99f,
@@ -231,7 +231,7 @@ namespace MagazinOnlineImbracaminte.Models
 
                     new Product
                     {
-                        //ProductId = 3,
+                        ProductId = 3,
                         Name = "Bluza Roz",
                         InStock = true,
                         Price = 99.99f,
@@ -247,7 +247,7 @@ namespace MagazinOnlineImbracaminte.Models
 
                     new Product
                     {
-                        //ProductId = 4,
+                        ProductId = 4,
                         Name = "Jeans Dama",
                         InStock = true,
                         Price = 99.99f,
@@ -263,7 +263,7 @@ namespace MagazinOnlineImbracaminte.Models
 
                     new Product
                     {
-                        //ProductId = 5,
+                        ProductId = 5,
                         Name = "Rochie Galbena",
                         InStock = true,
                         Price = 89.99f,
@@ -279,7 +279,7 @@ namespace MagazinOnlineImbracaminte.Models
 
                     new Product
                     {
-                        //ProductId = 6,
+                        ProductId = 6,
                         Name = "Rochie Roz",
                         InStock = true,
                         Price = 79.99f,
@@ -293,7 +293,7 @@ namespace MagazinOnlineImbracaminte.Models
 
                     new Product
                     {
-                        //ProductId = 7,
+                        ProductId = 7,
                         Name = "Rochie Verde",
                         InStock = false,
                         Price = 84.99f,
@@ -309,7 +309,7 @@ namespace MagazinOnlineImbracaminte.Models
 
                     new Product
                     {
-                        //ProductId = 8,
+                        ProductId = 8,
                         Name = "Rochie Visinie",
                         InStock = false,
                         Price = 84.99f,
@@ -325,7 +325,7 @@ namespace MagazinOnlineImbracaminte.Models
 
                     new Product
                     {
-                        //ProductId = 9,
+                        ProductId = 9,
                         Name = "Sosete Banane",
                         InStock = true,
                         Price = 19.99f,
@@ -340,7 +340,7 @@ namespace MagazinOnlineImbracaminte.Models
                     },
                     new Product
                     {
-                        //ProductId = 10,
+                        ProductId = 10,
                         Name = "Sosete Craciun",
                         InStock = true,
                         Price = 24.99f,
@@ -353,7 +353,7 @@ namespace MagazinOnlineImbracaminte.Models
                             Color = "Model Craciun"
                         }
                     }
-                );
+                ) ;
 
                 context.SaveChanges();
             }

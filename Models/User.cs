@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using MagazinOnlineImbracaminte.Models.Validator;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace MagazinOnlineImbracaminte.Models
         public string FirstName { get; set; }
         [MaxLength(50)]
         public string LastName { get; set; }
+        [ValidatorEmail]
         [MaxLength(15)]
         public string PhoneNumber { get; set; }
         [MaxLength(100)]

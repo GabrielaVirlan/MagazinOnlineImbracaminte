@@ -5,11 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MagazinOnlineImbracaminte.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace MagazinOnlineImbracaminte.Data
 {
-    public class MagazinOnlineImbracaminteContext : IdentityDbContext
+    public class MagazinOnlineImbracaminteContext : IdentityDbContext<IdentityUser>
     {
+        public MagazinOnlineImbracaminteContext()
+        {
+        }
+
         public MagazinOnlineImbracaminteContext (DbContextOptions<MagazinOnlineImbracaminteContext> options)
             : base(options)
         {
@@ -25,10 +30,10 @@ namespace MagazinOnlineImbracaminte.Data
 
         public DbSet<MagazinOnlineImbracaminte.Models.ProductDetails> ProductDetailss { get; set; }
 
-        public DbSet<MagazinOnlineImbracaminte.Models.Role> Roles { get; set; }
+        public override DbSet<IdentityRole> Roles { get; set; }
 
         public DbSet<MagazinOnlineImbracaminte.Models.UserRole> UserRoles { get; set; }
 
-        public DbSet<MagazinOnlineImbracaminte.Models.User> Users { get; set; }
+        public override DbSet<IdentityUser> Users { get; set; }
     }
 }

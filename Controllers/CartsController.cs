@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MagazinOnlineImbracaminte.Models;
 using MagazinOnlineImbracaminte.Data;
+using MagazinOnlineImbracaminte.Helpers;
 
 namespace MagazinOnlineImbracaminte.Controllers
 {
@@ -19,10 +20,137 @@ namespace MagazinOnlineImbracaminte.Controllers
             _context = context;
         }
 
-        // GET: Carts
-        public async Task<IActionResult> Index()
+
+      /*  private int isExist(int id)
         {
-            return View(await _context.Carts.ToListAsync());
+            Cart cart = SessionHelper.GetObjectFromJson<Cart>(HttpContext.Session, "cart");
+            int index = 0;
+            foreach (Product productId in cart.ProductCart.Products)
+            {
+                if (product.ProductId.Equals(id))
+                {
+                    return index;
+                }
+                index++;
+            }
+            return -1;
+        } */
+
+
+        //public async task addproducttocartasync(int id, int quantity)
+        //{
+        //caz1: nu exista cart - ul
+        //    if (sessionhelper.getobjectfromjson<cart>(httpcontext.session, "cart") == null)
+        //    {
+        //        instantiere cart cu id 0;
+        //        cart cart = new cart();
+        //        cart.cartid = 0;
+
+        //        instantiere productcart cu id 0;
+        //        cart.productcart.productcartid = 0;
+
+        //        creare / initializare productcart;
+        //        var product = await _context.products
+        //            .firstordefaultasync(m => m.productid == id);
+        //        cart.productcart.productid = id;
+        //        cart.productcart.cartid = cart.cartid;
+
+        //        adaugare product in productcart in cart;
+        //        cart.productcart.productqunatity = quantity;
+        //        cart.productcart.products.add(product);
+
+        //    }
+        //    caz 1: exista cart-ul
+        //    else
+        //    {
+        //        productcart productcart = sessionhelper.getobjectfromjson<productcart>(httpcontext.session, "cart");
+
+        //        foreach (var product in productcart.products)
+        //        {
+        //            daca produsul exista in cart, deja;
+        //            if (product.productid == id)
+        //            {
+        //                productcart.productqunatity += quantity;
+
+        //            }
+        //            produsul nu exista in cos;
+        //            else
+        //            {
+        //                instantiere productcart cu id 0;
+        //                cart.productcart.productcartid = 0;
+
+        //                creare / initializare productcart;
+        //                var product2 = await _context.products
+        //                    .firstordefaultasync(m => m.productid == id);
+        //                cart.productcart.productid = id;
+        //                cart.productcart.cartid = cart.cartid;
+
+        //                adaugare product in productcart in cart;
+        //                cart.productcart.productqunatity = quantity;
+        //                cart.productcart.products.add(product2);
+        //            }
+        //        }
+
+
+          //  }
+        //}
+
+
+       /* public async Task<IActionResult> Buy(int id)
+        {
+            if(SessionHelper.GetObjectFromJson<Cart>(HttpContext.Session, "cart") == null)
+            {
+                //adaugarea produsului in lista de produse in cosul cu indexul 0
+                var product = await _context.Products
+                    .FirstOrDefaultAsync(m => m.ProductId == id);
+
+                Cart cart = new Cart { CartId = 0, ProductCart = new ProductCart(), DeliveryAdress = new Delivery(), User = new User()};
+
+                // instantiez lista de produse de tip ICollectio cu List<Products>
+                List<Product> products = new List<Product>();
+                products.Add(product);
+
+                cart.ProductCart.Products = products;
+
+                _context.Carts.Add(cart);
+
+                _context.SaveChanges();
+
+                SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+            }
+            else
+            {
+                Cart cart = SessionHelper.GetObjectFromJson<Cart>(HttpContext.Session, "cart");
+                int index = isExist(id);
+                if(index != -1)
+                {
+                    cart.ProductCart.Products.ElementAt(index);
+                }
+                SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+            }
+            return RedirectToAction("Index");
+        }*/
+
+        /*public async Task<IActionResult> Remove(int id)
+        {
+            Cart cart = SessionHelper.GetObjectFromJson<Cart>(HttpContext.Session, "cart");
+            int index = isExist(id);
+            var product = await _context.Products
+                        .FirstOrDefaultAsync(m => m.ProductId== id);
+            cart.ProductCart.Products.Remove(product);
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+            return RedirectToAction("Index");
+        }
+        */
+        // GET: Carts
+        public IActionResult Index()
+        {
+
+            Cart cart = SessionHelper.GetObjectFromJson<Cart>(HttpContext.Session, "cart");
+            ViewData["cart"] = cart;
+            //ViewData["total"] = cart.Sum(Product => Product.Price * Product.Quantities);
+
+            return View();
         }
 
         // GET: Carts/Details/5

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MagazinOnlineImbracaminte.Models;
 using MagazinOnlineImbracaminte.Data;
+using System.Diagnostics;
 
 namespace MagazinOnlineImbracaminte.Controllers
 {

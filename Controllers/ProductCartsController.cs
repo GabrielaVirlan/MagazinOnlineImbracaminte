@@ -35,6 +35,7 @@ namespace MagazinOnlineImbracaminte.Controllers
 
             var productCart = await _context.ProductCarts
                 .FirstOrDefaultAsync(m => m.ProductCartId == id);
+
             if (productCart == null)
             {
                 return NotFound();

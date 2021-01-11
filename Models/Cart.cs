@@ -14,12 +14,11 @@ namespace MagazinOnlineImbracaminte.Models
         public int CartId { get; set; }
 
         //relatie one to many : Cart <-> User
-        public virtual User User { get; set; }
 
         //relatie  unu la unu : Cart <-> Delivery
         public Delivery DeliveryAdress { get; set; }
 
         //relatie one to many: Cart <-> CartProduct
-        public ProductCart ProductCart { get; set; }
+        public int ProductCartId { get; set; }
     }
 }

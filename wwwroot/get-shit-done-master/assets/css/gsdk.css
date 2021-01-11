@@ -1079,7 +1079,8 @@ input.ct-red + span + label + span.switch-right {
   position: relative;
   text-align: left;
   width: 60px;
-  -webkit-user-select: none;
+  -webkit-
+      -select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   -o-user-select: none;

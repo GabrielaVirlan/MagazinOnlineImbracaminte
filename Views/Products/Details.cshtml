@@ -28,13 +28,15 @@
 
     <form>
         <label for="action">Cantitate:</label>
+
         <select name="action" id="action">
-            @for (int i = 1; i<= Model.QuantityInStock; i++)
+            @for (int i = 1; i <= Model.QuantityInStock; i++)
             {
-                <option value=i >@i</option>
+                <option value=@i>@i</option>
 
             }
         </select>
-        <button class="btn btn-primary" type="submit" name="submit" value="submit">Adauga in cos</button>
+
+        <a asp-controller="Carts" asp-action="Buy" asp-route-id="@Model.ProductId">Buy</a>
     </form>
 </section>

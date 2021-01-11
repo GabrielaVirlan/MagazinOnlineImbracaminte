@@ -22,12 +22,11 @@ namespace MagazinOnlineImbracaminte.Models
         [Range(0, 100, ErrorMessage = "Nu exista mai mult de 100 de produse in stoc!")]
         public int QuantityInStock { set; get; }
         [Range(0, 10, ErrorMessage = "Nu puteti introduce mai mult de 10 produse in cos!")]
-        public int Quantities { get; set; }
 
         public ProductDetails ProductDetails { get; set; }
 
         //relatie one to many : Product <-> ProductCart
-        public ProductCart ProductCart { get; set; }
+        public int ProductCartID { get; set; }
 
 
 

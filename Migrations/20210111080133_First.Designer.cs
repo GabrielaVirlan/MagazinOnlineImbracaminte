@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace MagazinOnlineImbracaminte.Data.Migrations
+namespace MagazinOnlineImbracaminte.Migrations
 {
     [DbContext(typeof(MagazinOnlineImbracaminteContext))]
-    [Migration("20201230084335_First")]
+    [Migration("20210111080133_First")]
     partial class First
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,15 +28,13 @@ namespace MagazinOnlineImbracaminte.Data.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int?>("ProductCartId")
+                    b.Property<int>("ProductCartId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("CartId");
-
-                    b.HasIndex("ProductCartId");
 
                     b.HasIndex("UserId");
 
@@ -101,21 +99,16 @@ namespace MagazinOnlineImbracaminte.Data.Migrations
                     b.Property<float>("Price")
                         .HasColumnType("real");
 
-                    b.Property<int?>("ProductCartId")
+                    b.Property<int>("ProductCartID")
                         .HasColumnType("int");
 
                     b.Property<int?>("ProductDetailsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantities")
                         .HasColumnType("int");
 
                     b.Property<int>("QuantityInStock")
                         .HasColumnType("int");
 
                     b.HasKey("ProductId");
-
-                    b.HasIndex("ProductCartId");
 
                     b.HasIndex("ProductDetailsId");
 
@@ -128,6 +121,15 @@ namespace MagazinOnlineImbracaminte.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
+
+                    b.Property<int>("CartId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductQunatity")
+                        .HasColumnType("int");
 
                     b.HasKey("ProductCartId");
 
@@ -430,17 +432,9 @@ namespace MagazinOnlineImbracaminte.Data.Migrations
 
             modelBuilder.Entity("MagazinOnlineImbracaminte.Models.Cart", b =>
                 {
-                    b.HasOne("MagazinOnlineImbracaminte.Models.ProductCart", "ProductCart")
-                        .WithMany("Carts")
-                        .HasForeignKey("ProductCartId");
-
-                    b.HasOne("MagazinOnlineImbracaminte.Models.User", "User")
+                    b.HasOne("MagazinOnlineImbracaminte.Models.User", null)
                         .WithMany("Carts")
                         .HasForeignKey("UserId");
-
-                    b.Navigation("ProductCart");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("MagazinOnlineImbracaminte.Models.Delivery", b =>
@@ -462,15 +456,9 @@ namespace MagazinOnlineImbracaminte.Data.Migrations
 
             modelBuilder.Entity("MagazinOnlineImbracaminte.Models.Product", b =>
                 {
-                    b.HasOne("MagazinOnlineImbracaminte.Models.ProductCart", "ProductCart")
-                        .WithMany("Products")
-                        .HasForeignKey("ProductCartId");
-
                     b.HasOne("MagazinOnlineImbracaminte.Models.ProductDetails", "ProductDetails")
                         .WithMany("Products")
                         .HasForeignKey("ProductDetailsId");
-
-                    b.Navigation("ProductCart");
 
                     b.Navigation("ProductDetails");
                 });
@@ -547,13 +535,6 @@ namespace MagazinOnlineImbracaminte.Data.Migrations
             modelBuilder.Entity("MagazinOnlineImbracaminte.Models.Cart", b =>
                 {
                     b.Navigation("DeliveryAdress");
-                });
-
-            modelBuilder.Entity("MagazinOnlineImbracaminte.Models.ProductCart", b =>
-                {
-                    b.Navigation("Carts");
-
-                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("MagazinOnlineImbracaminte.Models.ProductDetails", b =>

@@ -1,3 +1,4 @@
+using MagazinOnlineImbracaminte.Data;
 using MagazinOnlineImbracaminte.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -8,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MagazinOnlineImbracaminte.Data;
 
 namespace MagazinOnlineImbracaminte
 {
@@ -17,6 +19,7 @@ namespace MagazinOnlineImbracaminte
         {
             var host = CreateHostBuilder(args).Build();
 
+
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
@@ -24,6 +27,7 @@ namespace MagazinOnlineImbracaminte
                 try
                 {
                     SeedData.Initialize(services);
+
                 }
                 catch (Exception ex)
                 {
