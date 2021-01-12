@@ -16,15 +16,19 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                <a asp-controller="Cart" asp-action="Remove" asp-route-id="@item"> </a>
-            </td>
-            <td>
-                
-            </td>
-        </tr>
-}
+        @{
+            if (Model is not null)
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a asp-controller="Cart" asp-action="Remove" asp-route-id="@item"> </a>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                }
+        }
+
     </tbody>
 </table>

@@ -13,12 +13,7 @@ namespace MagazinOnlineImbracaminte.Models
         [Key]
         public int CartId { get; set; }
 
-        //relatie one to many : Cart <-> User
-
         //relatie  unu la unu : Cart <-> Delivery
         public Delivery DeliveryAdress { get; set; }
-
-        //relatie one to many: Cart <-> CartProduct
-        public int ProductCartId { get; set; }
     }
 }

@@ -21,21 +21,23 @@ namespace MagazinOnlineImbracaminte.Controllers
         }
 
 
-      /*  private int isExist(int id)
-        {
-            Cart cart = SessionHelper.GetObjectFromJson<Cart>(HttpContext.Session, "cart");
-            int index = 0;
-            foreach (Product productId in cart.ProductCart.Products)
-            {
-                if (product.ProductId.Equals(id))
-                {
-                    return index;
-                }
-                index++;
-            }
-            return -1;
-        } */
+        /*  private int isExist(int id)
+          {
+              Cart cart = SessionHelper.GetObjectFromJson<Cart>(HttpContext.Session, "cart");
+              int index = 0;
+              foreach (Product productId in cart.ProductCart.Products)
+              {
+                  if (product.ProductId.Equals(id))
+                  {
+                      return index;
+                  }
+                  index++;
+              }
+              return -1;
+          } */
 
+
+        
 
         //public async task addproducttocartasync(int id, int quantity)
         //{
@@ -151,6 +153,36 @@ namespace MagazinOnlineImbracaminte.Controllers
             //ViewData["total"] = cart.Sum(Product => Product.Price * Product.Quantities);
 
             return View();
+        }
+
+        public async Task<IActionResult> AddProductToCartAsync(int ProductId)
+        {
+            var carts = SessionHelper.GetObjectFromJson<DbSet<Cart>>(HttpContext.Session, "carts");
+            var productCarts = SessionHelper.GetObjectFromJson<DbSet<ProductCart>>(HttpContext.Session, "productCarts");
+            var product = await _context.Products
+                    .FirstOrDefaultAsync(m => m.ProductId == ProductId);
+            if (!carts.Any())
+            {
+                Cart cart = new Cart();
+                cart.CartId = 0;
+                //carts.Add(cart);
+
+                _context.Carts.Add(cart);
+
+                ProductCart productCart = new ProductCart();
+                productCart.ProductCartId = 0;
+                productCart.ProductId = ProductId;
+                productCart.CartId = cart.CartId;
+                productCart.ProductQunatity = 1;
+
+                _context.ProductCarts.Add(productCart);
+
+                SessionHelper.SetObjectAsJson(HttpContext.Session, "carts", _context.Carts);
+                SessionHelper.SetObjectAsJson(HttpContext.Session, "productCarts", _context.ProductCarts);
+
+            }
+
+            return View(product);
         }
 
         // GET: Carts/Details/5

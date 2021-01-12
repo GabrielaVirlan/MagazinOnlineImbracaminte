@@ -15,8 +15,16 @@ namespace MagazinOnlineImbracaminte.Models
         //relatie one to many : Carts <-> ProductCart
 
         public int ProductQunatity { get; set; }
+
         public int CartId { get; set; }
+
+        [ForeignKey("CartId")]
+        public Cart Cart { get; set; }
+
         public int ProductId { get; set; }
+
+        [ForeignKey("ProductId")]
+        public Product Product { get; set; }
 
     }
 }

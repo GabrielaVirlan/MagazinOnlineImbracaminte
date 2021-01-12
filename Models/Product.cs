@@ -25,8 +25,6 @@ namespace MagazinOnlineImbracaminte.Models
 
         public ProductDetails ProductDetails { get; set; }
 
-        //relatie one to many : Product <-> ProductCart
-        public int ProductCartID { get; set; }
 
 
 

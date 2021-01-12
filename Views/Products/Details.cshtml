@@ -26,17 +26,20 @@
         }
     </section>
 
+    @{
+        int i=1;
+    }
     <form>
         <label for="action">Cantitate:</label>
 
-        <select name="action" id="action">
-            @for (int i = 1; i <= Model.QuantityInStock; i++)
+        <select name="action" id="quantitySelect">
+            @for (i = 1; i <= Model.QuantityInStock; i++)
             {
                 <option value=@i>@i</option>
 
             }
         </select>
 
-        <a asp-controller="Carts" asp-action="Buy" asp-route-id="@Model.ProductId">Buy</a>
+        <div>@Html.ActionLink("Adauga in cos", "AddProductToCartAsync", "Carts", new { ProductId = Model.ProductId }, null)</div>
     </form>
 </section>

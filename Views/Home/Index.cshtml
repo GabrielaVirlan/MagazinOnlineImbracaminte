@@ -3,3 +3,41 @@
 @{
     ViewData["Title"] = "Acasa";
 }
+
+
+
+<section class="mainPhotos">
+    <figure class="text-center">
+        <br>
+        <a href="@Url.Action("Details", "Products", new { id = Model.ElementAt(0).ProductId })">
+            <img src="@Model.ElementAt(0).Image" asp-append-version="true" style="width : 80%; height: 100%;" />
+        </a>
+        <br>
+        <figcaption style="font-size: 200%">
+            @Html.DisplayFor(modelItem => Model.ElementAt(0).Name)
+        </figcaption>
+    </figure>
+
+
+    <figure class="text-center">
+        <br>
+        <a href="@Url.Action("Details", "Products", new { id = Model.ElementAt(1).ProductId })">
+            <img src="@Model.ElementAt(1).Image" asp-append-version="true" style="width : 80%; height: 100%;" />
+        </a>
+        <br>
+        <figcaption style="font-size: 200%">
+            @Html.DisplayFor(modelItem => Model.ElementAt(1).Name)
+        </figcaption>
+    </figure>
+
+    <figure class="text-center">
+        <br>
+        <a href="@Url.Action("Details", "Products", new { id = Model.ElementAt(2).ProductId })">
+            <img src="@Model.ElementAt(2).Image" asp-append-version="true" style="width : 80%; height: 100%;" />
+        </a>
+        <br>
+        <figcaption style="font-size: 200%">
+            @Html.DisplayFor(modelItem => Model.ElementAt(2).Name)
+        </figcaption>
+    </figure>
+</section> 

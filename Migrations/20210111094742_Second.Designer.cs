@@ -4,14 +4,16 @@ using MagazinOnlineImbracaminte.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MagazinOnlineImbracaminte.Migrations
 {
     [DbContext(typeof(MagazinOnlineImbracaminteContext))]
-    partial class MagazinOnlineImbracaminteContextModelSnapshot : ModelSnapshot
+    [Migration("20210111094742_Second")]
+    partial class Second
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,6 +27,9 @@ namespace MagazinOnlineImbracaminte.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
+
+                    b.Property<int>("ProductCartId")
+                        .HasColumnType("int");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -94,6 +99,9 @@ namespace MagazinOnlineImbracaminte.Migrations
                     b.Property<float>("Price")
                         .HasColumnType("real");
 
+                    b.Property<int>("ProductCartId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("ProductDetailsId")
                         .HasColumnType("int");
 
@@ -124,10 +132,6 @@ namespace MagazinOnlineImbracaminte.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ProductCartId");
-
-                    b.HasIndex("CartId");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("ProductCarts");
                 });
@@ -457,25 +461,6 @@ namespace MagazinOnlineImbracaminte.Migrations
                         .HasForeignKey("ProductDetailsId");
 
                     b.Navigation("ProductDetails");
-                });
-
-            modelBuilder.Entity("MagazinOnlineImbracaminte.Models.ProductCart", b =>
-                {
-                    b.HasOne("MagazinOnlineImbracaminte.Models.Cart", "Cart")
-                        .WithMany()
-                        .HasForeignKey("CartId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MagazinOnlineImbracaminte.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Cart");
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
